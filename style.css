@@ -1,0 +1,220 @@
+/* --- Professional Design System --- */
+:root {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --border-radius: 12px;
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    padding: 4rem 5%;
+    min-height: 100vh;
+}
+
+/* --- Header & Filter Menu --- */
+.gallery-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.gallery-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.gallery-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.filter-menu {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--text-muted);
+    color: var(--text-muted);
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition-smooth);
+}
+
+.filter-btn:hover {
+    border-color: var(--text-main);
+    color: var(--text-main);
+}
+
+.filter-btn.active {
+    background: var(--text-main);
+    color: var(--bg-primary);
+    border-color: var(--text-main);
+}
+
+/* --- Gallery Grid --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* --- Gallery Items --- */
+.gallery-item {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    cursor: pointer;
+    background: #000;
+    outline: none; /* Removed default outline for custom focus */
+    animation: scaleIn 0.5s ease forwards;
+}
+
+/* Accessibility Focus State */
+.gallery-item:focus-visible {
+    box-shadow: 0 0 0 4px var(--accent);
+}
+
+/* Smooth hiding class for JS filtering */
+.gallery-item.hide {
+    display: none;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                opacity 0.4s ease;
+}
+
+.gallery-item:hover img,
+.gallery-item:focus img {
+    transform: scale(1.05);
+    opacity: 0.6;
+}
+
+/* --- Glassmorphism Captions --- */
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 1.5rem 1.5rem;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 60%, transparent 100%);
+    backdrop-filter: blur(4px); /* Professional Glass Effect */
+    color: var(--text-main);
+    transform: translateY(100%);
+    transition: var(--transition-smooth);
+}
+
+.gallery-item:hover .caption,
+.gallery-item:focus .caption {
+    transform: translateY(0);
+}
+
+.caption h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.caption p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* --- Advanced Lightbox Modal --- */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-inner {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.lightbox.active .lightbox-inner {
+    transform: scale(1);
+}
+
+.lightbox-content {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: var(--border-radius);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+}
+
+.lightbox-caption {
+    margin-top: 1.5rem;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 3rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: var(--text-main);
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}

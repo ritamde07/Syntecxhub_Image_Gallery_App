@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Gallery Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="gallery-header">
+        <h1>Developer Architecture</h1>
+        <p>Exploring modern software and hardware integration environments.</p>
+        
+        <nav class="filter-menu" aria-label="Gallery Filters">
+            <button class="filter-btn active" data-filter="all">All Work</button>
+            <button class="filter-btn" data-filter="software">Software</button>
+            <button class="filter-btn" data-filter="hardware">Hardware & IoT</button>
+        </nav>
+    </header>
+
+    <main class="gallery-grid" id="gallery-container">
+        
+        <article class="gallery-item" data-category="software" tabindex="0" role="button" aria-label="View Frontend Architecture image">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Laptop on desk with code" loading="lazy">
+            <div class="caption">
+                <h3>Frontend Architecture</h3>
+                <p>Component-driven React interfaces.</p>
+            </div>
+        </article>
+
+        <article class="gallery-item" data-category="hardware" tabindex="0" role="button" aria-label="View Embedded Systems image">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Microcontroller and circuitry" loading="lazy">
+            <div class="caption">
+                <h3>Embedded Systems</h3>
+                <p>ESP32 and Arduino prototyping.</p>
+            </div>
+        </article>
+
+        <article class="gallery-item" data-category="software" tabindex="0" role="button" aria-label="View Backend Logic image">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="Dual monitor coding setup" loading="lazy">
+            <div class="caption">
+                <h3>Backend Logic</h3>
+                <p>Node.js and Express API routing.</p>
+            </div>
+        </article>
+
+        <article class="gallery-item" data-category="software" tabindex="0" role="button" aria-label="View Database Design image">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Matrix style code on screen" loading="lazy">
+            <div class="caption">
+                <h3>Database Design</h3>
+                <p>MongoDB schema optimization.</p>
+            </div>
+        </article>
+
+        <article class="gallery-item" data-category="hardware" tabindex="0" role="button" aria-label="View Sensor Integration image">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Person working on hardware" loading="lazy">
+            <div class="caption">
+                <h3>Sensor Integration</h3>
+                <p>Ultrasonic data processing routines.</p>
+            </div>
+        </article>
+
+        <article class="gallery-item" data-category="software" tabindex="0" role="button" aria-label="View Clean Workspaces image">
+            <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=800&q=80" alt="Modern clean desk setup" loading="lazy">
+            <div class="caption">
+                <h3>Clean Workspaces</h3>
+                <p>Minimalist, maintainable code structures.</p>
+            </div>
+        </article>
+    </main>
+
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
+        <button class="close-btn" aria-label="Close modal">&times;</button>
+        <div class="lightbox-inner">
+            <img class="lightbox-content" id="lightbox-img" src="" alt="Expanded view">
+            <h3 id="lightbox-caption" class="lightbox-caption"></h3>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
